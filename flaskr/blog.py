@@ -2,7 +2,8 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
 from werkzeug.exceptions import abort
-from flaskr.db import get_db
+from .db import get_db
+from .auth import login_required
 
 bp= Blueprint ('blog', __name__)
 
@@ -52,7 +53,7 @@ def create():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO post (title, body. author_id)'
+                'INSERT INTO post (title, body, author_id)'
                 ' VALUES (?, ?, ?)',
                 (title, body, g.user['id'])
             )
