@@ -75,9 +75,9 @@ def update(id):
         error = None
 
         if not title:
-            error = 'Title is required'
+            error = 'Title is required.'
         
-        if not body: 
+        elif not body: 
             error = 'Post must have content. Consider deleting your post if you don\'t like it.'
 
         if error is not None:
